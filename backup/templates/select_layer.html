@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Feature Class</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2>Select Feature Class from Geodatabase</h2>
+    <form action="/" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Available Layers:</label>
+            <select name="layer" class="form-control" required>
+                {% for layer in layers %}
+                <option value="{{ layer }}">{{ layer }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <input type="hidden" name="plot_id" value="{{ plot_id }}">
+        <input type="hidden" name="poly_path" value="{{ poly_path }}">
+
+        {% for ndvi_file in ndvi_files %}
+            <input type="hidden" name="ndvi_files_existing" value="{{ ndvi_file }}">
+        {% endfor %}
+
+        <button class="btn btn-primary">Continue</button>
+    </form>
+</body>
+</html>
